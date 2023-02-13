@@ -1,0 +1,54 @@
+2023-02-13 16:27:54 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "PROJECT" not found (this database is empty); SQL statement:
+SELECT client.name, count(*) as project_count
+FROM project
+LEFT JOIN client
+ON project.client_id = client.id
+GROUP BY client_id  HAVING project_count IN (
+             SELECT MAX(project_count)
+             FROM (SELECT client_id, COUNT(*) as project_count
+	                  FROM project
+                          GROUP BY client_id))
+
+; [42104-214]
+2023-02-13 16:27:54 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Объект уже закрыт
+The object is already closed [90007-214]
+2023-02-13 16:31:05 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "PROJECT" not found (this database is empty); SQL statement:
+SELECT client.name, count(*) as project_count
+FROM project
+LEFT JOIN client
+ON project.client_id = client.id
+GROUP BY client_id  HAVING project_count IN (
+             SELECT MAX(project_count)
+             FROM (SELECT client_id, COUNT(*) as project_count
+	                  FROM project
+                          GROUP BY client_id))
+
+; [42104-214]
+2023-02-13 16:32:26 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "PROJECT" not found (this database is empty); SQL statement:
+SELECT client.name, count(*) as project_count
+FROM project
+LEFT JOIN client
+ON project.client_id = client.id
+GROUP BY client_id  HAVING project_count IN (
+             SELECT MAX(project_count)
+             FROM (SELECT client_id, COUNT(*) as project_count
+	                  FROM project
+                          GROUP BY client_id))
+
+; [42104-214]
+2023-02-13 16:37:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Объект уже закрыт
+The object is already closed [90007-214]
+2023-02-13 16:48:02 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Объект уже закрыт
+The object is already closed [90007-214]
+2023-02-13 17:29:03 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Объект уже закрыт
+The object is already closed [90007-214]
+2023-02-13 17:32:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Объект уже закрыт
+The object is already closed [90007-214]
