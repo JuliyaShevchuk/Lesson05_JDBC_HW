@@ -28,6 +28,7 @@ public class Database {
 
     public void close() throws IOException, SQLException {
         connection.close();
+        connection = null;
     }
 
     public int executeUpdate(String sql){

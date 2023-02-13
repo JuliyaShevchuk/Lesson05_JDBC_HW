@@ -17,6 +17,8 @@ public class Main {
         for (MaxProjectCountClient element:resultMaxProjectCountClient) {
             System.out.println(element.getName() + "  "+ element.getProjectCount());
         }
+
+
         List<LongerProjectCount> resultLongerProjectCount  = new DatabaseQueryService().findLongerProject();
         System.out.println("--LongerProjectCount--");
         for (LongerProjectCount element:resultLongerProjectCount) {
