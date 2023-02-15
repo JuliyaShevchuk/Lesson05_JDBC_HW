@@ -18,13 +18,12 @@ public class Main {
             System.out.println(element.getName() + "  "+ element.getProjectCount());
         }
 
-
         List<LongerProjectCount> resultLongerProjectCount  = new DatabaseQueryService().findLongerProject();
         System.out.println("--LongerProjectCount--");
         for (LongerProjectCount element:resultLongerProjectCount) {
-            System.out.println(element.getName() + "  "+ element.getMonthCount());
+            System.out.println(element.getName() + "  " + element.getMonthCount());
         }
-/*
+
         List<MaxSalaryWorker> resultMaxSalaryWorker  = new DatabaseQueryService().maxSalaryWorker();
         System.out.println("--MaxSalaryWorker--");
         for (MaxSalaryWorker element:resultMaxSalaryWorker) {
@@ -42,8 +41,6 @@ public class Main {
         for (ProjectPrices element:resultProjectPrices) {
             System.out.println(element.getName() + "  "+ element.getSuma());
         }
-*/
-
 
     }
 }

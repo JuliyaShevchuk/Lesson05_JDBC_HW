@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DatabaseQueryService {
-  //  Connection connect = Database.getInstance().getConnection();
 
     public List<YoungestOldestWorkers> youngestOldestWorkers(){
         Connection connect = Database.getInstance().getConnection();
@@ -33,7 +32,11 @@ public class DatabaseQueryService {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
+        try {
+            connect.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         return result;
     }
     public List<ProjectPrices> projectPrices(){
@@ -53,7 +56,11 @@ public class DatabaseQueryService {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
+        try {
+            connect.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         return result;
     }
     public List<MaxSalaryWorker> maxSalaryWorker(){
@@ -73,13 +80,16 @@ public class DatabaseQueryService {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
+        try {
+            connect.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         return result;
     }
 
     public List<LongerProjectCount> findLongerProject() {
-        Database  database = Database.getInstance();
-        Connection connect = database.getConnection();
+        Connection connect = Database.getInstance().getConnection();
 
         String fileName = "./sql/find_longest_project.sql";
         String contents = new ReadFile().readUsingFiles(fileName);
@@ -99,19 +109,15 @@ public class DatabaseQueryService {
         }
 
         try {
-            database.close();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+            connect.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
         return result;
-
     }
 
     public List<MaxProjectCountClient> findMaxProjectsClient() {
-        Database  database = Database.getInstance();
-        Connection connect = database.getConnection();
+        Connection connect = Database.getInstance().getConnection();
 
         String fileName = "./sql/find_max_projects_client.sql";
         String contents = new ReadFile().readUsingFiles(fileName);
@@ -129,17 +135,12 @@ public class DatabaseQueryService {
             e.printStackTrace();
         }
 
-
         try {
-            database.close();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+            connect.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
         return result;
-
     }
 
 }

@@ -4,7 +4,9 @@ import ua.goit.database.Database;
 import ua.goit.utils.ReadFile;
 
 import java.io.IOException;
+import java.sql.Connection;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class DatabaseInitService {
     public static void main(String[] args)  {
@@ -12,12 +14,15 @@ public class DatabaseInitService {
         ReadFile readFile = new ReadFile();
         String contents = readFile.readUsingFiles(fileName);
 
-        Database database = Database.getInstance();
-        database.executeUpdate(contents);
+        Connection connection = Database.getInstance().getConnection();
+        try (Statement st = connection.createStatement()) {
+            st.executeUpdate(contents);
+        } catch (Exception ex){
+            ex.printStackTrace();
+        }
+
         try {
-            database.close();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+            connection.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
